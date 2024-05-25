@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { hash } from 'bcrypt';
 import { Repository } from 'typeorm';
-import { CreateUserDto } from './dtos/createUser.dto';
+import { CreateUserDto } from './dtos/create-user.dto';
 import { UserEntity } from './interfaces/user.entity';
 
 @Injectable()
@@ -26,7 +26,9 @@ export class UserService {
   }
 
   async getUserById(idUser: number): Promise<UserEntity> {
-    return this.userRepository.findOneBy({ id: idUser });
+    const user = await this.userRepository.findOneBy({ id: idUser });
+
+    return { ...user, password: undefined };
   }
 
   async getAllUsers(): Promise<UserEntity[]> {

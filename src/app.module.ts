@@ -1,6 +1,13 @@
-import { Module } from '@nestjs/common';
+import {
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+  RequestMethod,
+} from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ContentModule } from './content/content.module';
+import { AuthMiddleware } from './middlewares/auth.middleware';
 import { UserModule } from './user/user.module';
 
 @Module({
@@ -21,8 +28,15 @@ import { UserModule } from './user/user.module';
       migrationsRun: true,
     }),
     UserModule,
+    ContentModule,
   ],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(AuthMiddleware)
+      .forRoutes({ path: 'content', method: RequestMethod.POST,});
+  }
+}
