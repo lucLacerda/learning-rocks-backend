@@ -15,7 +15,7 @@ export class ContentController {
   constructor(private readonly contentService: ContentService) {}
 
   @Get()
-  getContent(@Query('id') id?: number) {
+  getContent(@Query('idContent') id?: number) {
     if (id) {
       return this.contentService.getById(id);
     }

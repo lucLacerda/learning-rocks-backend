@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { hash } from 'bcrypt';
 import { Repository } from 'typeorm';
@@ -27,6 +27,10 @@ export class UserService {
 
   async getUserById(idUser: number): Promise<UserEntity> {
     const user = await this.userRepository.findOneBy({ id: idUser });
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
 
     return { ...user, password: undefined };
   }

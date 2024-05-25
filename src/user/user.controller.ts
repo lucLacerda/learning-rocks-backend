@@ -16,7 +16,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get()
-  async getUser(@Query('id') idUser: number) {
+  async getUser(@Query('idUser') idUser: number) {
     if (idUser) {
       return this.userService.getUserById(idUser);
     }

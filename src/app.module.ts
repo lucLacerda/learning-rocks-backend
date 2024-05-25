@@ -25,7 +25,7 @@ import { UserModule } from './user/user.module';
       synchronize: true,
       entities: [`${__dirname}/**/*.entity{.js,.ts}`],
       migrations: [`${__dirname}/migration/{.ts,*.js}`],
-      migrationsRun: true,
+      migrationsRun: true, // Just test and development, never push in production
     }),
     UserModule,
     ContentModule,
