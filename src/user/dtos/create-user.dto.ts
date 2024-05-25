@@ -8,7 +8,7 @@ export class CreateUserDto {
   @IsString()
   email: string;
 
-  @IsEnum(USER_TYPE_ENUM)
+  @IsEnum(USER_TYPE_ENUM, { message: 'typeUser must be a valid enum value' })
   typeUser: USER_TYPE_ENUM;
 
   @IsString()

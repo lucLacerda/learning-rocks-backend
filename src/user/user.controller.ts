@@ -1,22 +1,23 @@
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import {
-  Body,
-  Controller,
-  ForbiddenException,
-  Get,
-  Post,
-  Query,
-  Req,
-} from '@nestjs/common';
+  ApiBody,
+  ApiQuery,
+  ApiResponse,
+  ApiSecurity,
+  ApiTags,
+} from '@nestjs/swagger';
 import { CreateUserDto } from './dtos/create-user.dto';
-import { USER_TYPE_ENUM } from './enum/user-type.enum';
 import { UserService } from './user.service';
 
+@ApiTags('user')
+@ApiSecurity('access-token')
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get()
-  async getUser(@Query('idUser') idUser: number) {
+  @ApiQuery({ name: 'idUser', required: false })
+  async getUser(@Query('idUser') idUser?: number) {
     if (idUser) {
       return this.userService.getUserById(idUser);
     }
@@ -24,12 +25,25 @@ export class UserController {
   }
 
   @Post()
-  async createUser(@Body() createUser: CreateUserDto, @Req() req: Request) {
-    if (req['user']?.role !== 'admin') {
-      throw new ForbiddenException(
-        'Only admins are allowed to perform this action',
-      );
-    }
+  @ApiBody({
+    type: CreateUserDto,
+    examples: {
+      default: {
+        value: {
+          name: 'John Doe',
+          email: 'john@example.com',
+          typeUser: 1,
+          password: 'strongPassword123',
+        },
+      },
+    },
+  })
+  @ApiResponse({
+    status: 201,
+    description: 'User successfully created.',
+    type: CreateUserDto,
+  })
+  createUser(@Body() createUser: CreateUserDto) {
     return this.userService.createUser(createUser);
   }
 }

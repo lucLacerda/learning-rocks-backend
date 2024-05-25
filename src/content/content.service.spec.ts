@@ -68,7 +68,7 @@ describe('ContentService', () => {
   });
 
   it('should find content by ID and increment view count', async () => {
-    const content = await service.getById(1);
+    const content = await service.getContentById(1);
     expect(content).toBeDefined();
     expect(mockRepository.findOneBy).toBeCalledWith({ id: 1 });
     expect(mockRepository.increment).toBeCalledWith({ id: 1 }, 'viewCount', 1);

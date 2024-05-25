@@ -8,6 +8,6 @@ export class CreateContentDto {
   @IsString()
   description: string;
 
-  @IsEnum(CONTENT_TYPE_ENUM)
+  @IsEnum(CONTENT_TYPE_ENUM, { message: 'contentType must be either VIDEO, PDF, or IMAGE' })
   contentType: CONTENT_TYPE_ENUM;
 }

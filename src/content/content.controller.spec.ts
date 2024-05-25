@@ -15,28 +15,24 @@ describe('ContentController', () => {
         {
           provide: ContentService,
           useValue: {
-            getAll: jest
-              .fn()
-              .mockResolvedValue([
-                {
-                  id: 1,
-                  name: 'Test Content',
-                  description: 'Description',
-                  contentType: 'VIDEO',
-                  viewCount: 0,
-                },
-              ]),
-            getById: jest
-              .fn()
-              .mockImplementation((id) =>
-                Promise.resolve({
-                  id,
-                  name: 'Test Content',
-                  description: 'Description',
-                  contentType: 'VIDEO',
-                  viewCount: 0,
-                }),
-              ),
+            getAll: jest.fn().mockResolvedValue([
+              {
+                id: 1,
+                name: 'Test Content',
+                description: 'Description',
+                contentType: 'VIDEO',
+                viewCount: 0,
+              },
+            ]),
+            getById: jest.fn().mockImplementation((id) =>
+              Promise.resolve({
+                id,
+                name: 'Test Content',
+                description: 'Description',
+                contentType: 'VIDEO',
+                viewCount: 0,
+              }),
+            ),
             createContent: jest
               .fn()
               .mockImplementation((dto) =>
@@ -64,7 +60,7 @@ describe('ContentController', () => {
   it('should get content by ID', async () => {
     const result = await controller.getContent(1);
     expect(result).toBeDefined();
-    expect(service.getById).toBeCalledWith(1);
+    expect(service.getContentById).toBeCalledWith(1);
   });
 
   it('should create content', async () => {
