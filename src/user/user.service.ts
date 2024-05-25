@@ -30,6 +30,8 @@ export class UserService {
   }
 
   async getAllUsers(): Promise<UserEntity[]> {
-    return this.userRepository.find();
+    return this.userRepository.find({
+      select: ['id', 'name', 'email', 'typeUser'],
+    });
   }
 }
