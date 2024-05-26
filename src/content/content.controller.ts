@@ -8,6 +8,7 @@ import {
   Req,
 } from '@nestjs/common';
 import { ApiBody, ApiQuery, ApiSecurity, ApiTags } from '@nestjs/swagger';
+import { Request } from 'express';
 import { ContentService } from './content.service';
 import { CreateContentDto } from './dtos/create-content.dto';
 
