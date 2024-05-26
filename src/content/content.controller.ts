@@ -1,14 +1,5 @@
-import {
-  Body,
-  Controller,
-  ForbiddenException,
-  Get,
-  Post,
-  Query,
-  Req,
-} from '@nestjs/common';
-import { ApiBody, ApiQuery, ApiSecurity, ApiTags } from '@nestjs/swagger';
-import { Request } from 'express';
+import { Controller, Get, Query, Post, Body, Req, ForbiddenException } from '@nestjs/common';
+import { ApiTags, ApiSecurity, ApiQuery, ApiBody } from '@nestjs/swagger';
 import { ContentService } from './content.service';
 import { CreateContentDto } from './dtos/create-content.dto';
 
