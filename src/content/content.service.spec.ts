@@ -3,7 +3,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ContentService } from './content.service';
-import { CreateContentDto } from './dtos/create-content.dto';
+import { ContentDto } from './dtos/create-content.dto';
 import { CONTENT_TYPE_ENUM } from './enum/content-type.enum';
 import { ContentEntity } from './interfaces/content.entity';
 
@@ -56,7 +56,7 @@ describe('ContentService', () => {
   });
 
   it('should create content', async () => {
-    const dto: CreateContentDto = {
+    const dto: ContentDto = {
       name: 'New Video',
       description: 'A new video content',
       contentType: CONTENT_TYPE_ENUM.VIDEO,

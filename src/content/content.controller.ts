@@ -1,7 +1,17 @@
-import { Controller, Get, Query, Post, Body, Req, ForbiddenException } from '@nestjs/common';
-import { ApiTags, ApiSecurity, ApiQuery, ApiBody } from '@nestjs/swagger';
+import {
+  Body,
+  Controller,
+  Delete,
+  ForbiddenException,
+  Get,
+  Post,
+  Put,
+  Query,
+  Req,
+} from '@nestjs/common';
+import { ApiBody, ApiQuery, ApiSecurity, ApiTags } from '@nestjs/swagger';
 import { ContentService } from './content.service';
-import { CreateContentDto } from './dtos/create-content.dto';
+import { ContentDto } from './dtos/create-content.dto';
 
 @ApiTags('content')
 @ApiSecurity('access-token')
@@ -20,7 +30,7 @@ export class ContentController {
 
   @Post()
   @ApiBody({
-    type: CreateContentDto,
+    type: ContentDto,
     examples: {
       default: {
         value: {
@@ -31,12 +41,50 @@ export class ContentController {
       },
     },
   })
-  create(@Body() createContentDto: CreateContentDto, @Req() req: Request) {
+  create(@Body() createContentDto: ContentDto, @Req() req: Request) {
     if (req['user']?.role !== 'admin') {
       throw new ForbiddenException(
         'Only admins are allowed to perform this action',
       );
     }
     return this.contentService.createContent(createContentDto);
+  }
+
+  @Put()
+  @ApiQuery({ name: 'idContent', required: true })
+  @ApiBody({
+    type: ContentDto,
+    examples: {
+      default: {
+        value: {
+          name: 'Sample Content',
+          description: 'A sample content for demonstration.',
+          contentType: 'VIDEO',
+        },
+      },
+    },
+  })
+  update(
+    @Query('idContent') idContent: number,
+    @Body() createContentDto: ContentDto,
+    @Req() req: Request,
+  ) {
+    if (req['user']?.role !== 'admin') {
+      throw new ForbiddenException(
+        'Only admins are allowed to perform this action',
+      );
+    }
+    return this.contentService.updateContent(idContent, createContentDto);
+  }
+
+  @Delete()
+  @ApiQuery({ name: 'idContent', required: true })
+  delete(@Query('idContent') idContent: number, @Req() req: Request) {
+    if (req['user']?.role !== 'admin') {
+      throw new ForbiddenException(
+        'Only admins are allowed to perform this action',
+      );
+    }
+    return this.contentService.deleteContent(idContent);
   }
 }

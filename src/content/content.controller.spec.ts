@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ContentController } from './content.controller';
 import { ContentService } from './content.service';
-import { CreateContentDto } from './dtos/create-content.dto';
+import { ContentDto } from './dtos/create-content.dto';
 import { CONTENT_TYPE_ENUM } from './enum/content-type.enum';
 
 describe('ContentController', () => {
@@ -64,7 +64,7 @@ describe('ContentController', () => {
   });
 
   it('should create content', async () => {
-    const dto: CreateContentDto = {
+    const dto: ContentDto = {
       name: 'New Video',
       description: 'A new video content',
       contentType: CONTENT_TYPE_ENUM.VIDEO,

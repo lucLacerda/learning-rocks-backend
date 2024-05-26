@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CreateContentDto } from './dtos/create-content.dto';
+import { ContentDto } from './dtos/create-content.dto';
 import { ContentEntity } from './interfaces/content.entity';
 
 @Injectable()
@@ -26,12 +26,27 @@ export class ContentService {
     return { ...content, viewCount: content.viewCount + 1 };
   }
 
-  async createContent(
-    createContentDto: CreateContentDto,
-  ): Promise<ContentEntity> {
+  async createContent(createContentDto: ContentDto): Promise<ContentEntity> {
     const newContent = this.contentRepository.create(createContentDto);
 
     await this.contentRepository.save(newContent);
     return newContent;
+  }
+
+  async updateContent(
+    idContent: number,
+    createContentDto: ContentDto,
+  ): Promise<ContentEntity> {
+    const content = await this.contentRepository.findOneBy({ id: idContent });
+    if (!content) {
+      throw new NotFoundException('Content not found');
+    }
+
+    await this.contentRepository.update({ id: idContent }, createContentDto);
+    return { ...content, ...createContentDto };
+  }
+
+  async deleteContent(id: number): Promise<void> {
+    await this.contentRepository.delete({ id });
   }
 }
