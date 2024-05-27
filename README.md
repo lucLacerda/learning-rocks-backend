@@ -48,7 +48,7 @@ cd learning-rocks-backend
 
 UP Complete Project
 ```bash
-docker compose up -d
+docker-compose up -d
 ```
 
 ### With Node
