@@ -46,20 +46,20 @@ cd learning-rocks-backend
 
 ### With Docker
 
+UP Complete Project
 ```bash
-# UP Complete Project
-$ docker compose up -d
+docker compose up -d
 ```
 
 ### With Node
 
 1° UP Database
 ```bash
-$ docker-compose -f ./docker/database/docker-compose.yml up -d
+docker-compose -f ./docker/database/docker-compose.yml up -d
 ```
 2° Install dependencies
 ```bash
-$ yarn install
+yarn install
 ```
 
 3° Copy and paste .env.development.local.example and remove .example
@@ -67,11 +67,10 @@ $ yarn install
 
 4° UP App 
 ```bash
-$ yarn start
+yarn start
 ```
 
 ## Using app
-
 
 Access app in
 ```bash
