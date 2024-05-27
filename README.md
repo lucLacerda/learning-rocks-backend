@@ -38,6 +38,7 @@ Before you begin, make sure you have installed:
 ### Video PT-BR
 https://drive.google.com/file/d/12Ecr_MmEcP-MFh655svg5FnSC9hQG_lf/view?usp=drive_link
 
+### Step initial:
 Clone the repository and install dependencies:
 
 ```bash
