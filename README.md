@@ -36,10 +36,10 @@ Before you begin, make sure you have installed:
 ## Installation
 
 ## Video Tutorial
-### Video PT-BR - Full HD
+### Video PT-BR - Full HD - better audio and video quality
 https://drive.google.com/file/d/12Ecr_MmEcP-MFh655svg5FnSC9hQG_lf/view?usp=drive_link
 
-### Video PT-BR - HD
+### Video PT-BR - HD - decreased audio and video quality
 https://github.com/lucLacerda/learning-rocks-backend/assets/89214092/0e6bba3b-76c2-40e1-a4bf-8fe438fc7764
 
 ### Step initial:
