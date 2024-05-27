@@ -26,47 +26,63 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Prerequisites
+
+Before you begin, make sure you have installed:
+- [Docker](https://www.docker.com/get-started)
+- [Node.js](https://nodejs.org/en/)
+- [Yarn](https://yarnpkg.com/)
+
 ## Installation
 
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/lucLacerda/learning-rocks-backend.git
+cd learning-rocks-backend
+```
+
+## Running the app in the two options
+
+### With Docker
+
+```bash
+# UP Complete Project
+$ docker compose up -d
+```
+
+### With Node
+
+1° UP Database
+```bash
+$ docker-compose -f ./docker/database/docker-compose.yml up -d
+```
+2° Install dependencies
 ```bash
 $ yarn install
 ```
 
-## Running the app
+3° Copy and paste .env.development.local.example and remove .example
+![image](https://github.com/lucLacerda/learning-rocks-backend/assets/89214092/11acc371-4b7d-48a9-8c61-6e5b376b51d6)
 
+4° UP App 
 ```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+$ yarn start
 ```
 
-## Test
+## Using app
 
+
+Access app in
 ```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+http://localhost:3000/api or http://your.ip:3000/api
 ```
 
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Authorization tokens:
+```bash
+admin-token-123
+student-token-456
+```
 
 ## License
 
