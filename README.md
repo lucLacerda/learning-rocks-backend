@@ -46,16 +46,16 @@ git clone https://github.com/lucLacerda/learning-rocks-backend.git
 cd learning-rocks-backend
 ```
 
-## Running the app in the two options
+### Running the app in the two options
 
-### With Docker
+#### With Docker
 
 UP Complete Project
 ```bash
 docker-compose up -d
 ```
 
-### With Node
+#### With Node
 
 1° UP Database
 ```bash
@@ -74,7 +74,7 @@ yarn install
 yarn start
 ```
 
-## Using app
+### Using app
 
 Access app in
 ```bash
