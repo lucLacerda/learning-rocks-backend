@@ -35,8 +35,12 @@ Before you begin, make sure you have installed:
 
 ## Installation
 
-### Video PT-BR
+## Video Tutorial
+### Video PT-BR - Full HD
 https://drive.google.com/file/d/12Ecr_MmEcP-MFh655svg5FnSC9hQG_lf/view?usp=drive_link
+
+### Video PT-BR - HD
+https://github.com/lucLacerda/learning-rocks-backend/assets/89214092/0e6bba3b-76c2-40e1-a4bf-8fe438fc7764
 
 ### Step initial:
 Clone the repository and install dependencies:
